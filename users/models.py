@@ -41,6 +41,7 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
+    followings = models.ManyToManyField('self', symmetrical=False, related_name='followers', blank=True) # symmetrical 대칭관계 / True 경우에는 맞팔할경우에만 적용
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
